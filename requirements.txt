@@ -1,4 +1,6 @@
+python-dateutil
 s3fs
 numpy
 rich
 pandas
+zarr

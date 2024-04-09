@@ -170,9 +170,11 @@ def main():
     args = parser.parse_args()
 
     config = configparser.ConfigParser()
-    with open(Path(args.config_file).expanduser()) as stream:
-        config.read_string("[DEFAULT]\n" + stream.read())
-        config = config["DEFAULT"]
+    path = Path(args.config_file).expanduser()
+
+    with open(path) as stream:
+        config.read_string(stream.read())
+        config = config["default"]
 
     key = config["access_key"]
     secret = config["secret_key"]
