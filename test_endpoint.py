@@ -182,7 +182,12 @@ def main():
     name = args.bucket_name
 
     s3 = s3fs.S3FileSystem(anon=False, key=key, secret=secret, endpoint_url=url)
-    grid_scan(s3, name, args.output_file)
+
+    output_file = Path(args.output_file)
+    output_dir = output_file.parent
+    output_dir.mkdir(exist_ok=True, parents=True)
+
+    grid_scan(s3, name, output_file)
 
 
 if __name__ == "__main__":
