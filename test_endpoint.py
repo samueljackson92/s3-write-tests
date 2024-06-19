@@ -11,20 +11,12 @@ import multiprocessing as mp
 from functools import partial
 from pathlib import Path
 from rich.progress import track
+from utils import Timer
 
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 handler = logging.StreamHandler()
 logger.addHandler(handler)
-
-
-class Timer:
-    def __enter__(self):
-        self.start = time.time()
-
-    def __exit__(self, exc_type, exc_value, exc_tb):
-        self.end = time.time()
-        self.duration = self.end - self.start
 
 
 def write_random_file(file_name: str, s3: s3fs.S3FileSystem, size: int = 1024):

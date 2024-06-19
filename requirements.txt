@@ -6,3 +6,7 @@ numpy
 rich
 pandas
 zarr
+h5py
+xarray
+netCDF4
+kerchunk
